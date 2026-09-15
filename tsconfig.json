@@ -23,5 +23,5 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "exclude": ["node_modules", "dist", "worker/env.d.ts"]
+  "exclude": ["node_modules", "dist"]
 }
