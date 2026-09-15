@@ -8,7 +8,7 @@ A modern, high-density real-time observability dashboard for monitoring **Cloudf
 
 | Metric | Status / Value | Details |
 |---|---|---|
-| **CI Build Status** | ![Build Passing](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square&logo=github-actions&logoColor=white) | GitHub Actions automated test & typecheck pipeline |
+| **CI Build Status** | [![CI Build & Test](https://github.com/Jeeva-zone/cf-worker-insights/actions/workflows/ci.yml/badge.svg)](https://github.com/Jeeva-zone/cf-worker-insights/actions) | GitHub Actions automated test & typecheck pipeline |
 | **Vercel Deploy** | ![Vercel Ready](https://img.shields.io/badge/Vercel-ready-black?style=flat-square&logo=vercel&logoColor=white) | Zero-config serverless proxy + Vite SPA |
 | **Netlify Deploy** | ![Netlify Ready](https://img.shields.io/badge/Netlify-ready-00C7B7?style=flat-square&logo=netlify&logoColor=white) | Serverless functions (`netlify/functions/server.ts`) |
 | **Cloudflare Pages** | ![Pages Ready](https://img.shields.io/badge/Cloudflare_Pages-ready-F38020?style=flat-square&logo=cloudflare&logoColor=white) | Direct edge static assets deployment |
@@ -27,7 +27,7 @@ Deploy your own instance of CF Worker Insights in seconds to your preferred plat
 
 Click the button below to fork and deploy directly to Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-username%2Fcf-worker-insights&env=CLOUDFLARE_API_TOKEN,CLOUDFLARE_ACCOUNT_ID&envDescription=Enter%20your%20Cloudflare%20API%20credentials%20for%20worker%20telemetry&project-name=cf-worker-insights)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FJeeva-zone%2Fcf-worker-insights&env=CLOUDFLARE_API_TOKEN,CLOUDFLARE_ACCOUNT_ID&envDescription=Enter%20your%20Cloudflare%20API%20credentials%20for%20worker%20telemetry&project-name=cf-worker-insights)
 
 - Pre-configured with `vercel.json` and `/api/index.ts` serverless functions.
 - Securely proxies calls to Cloudflare GraphQL API without exposing tokens to the client.
@@ -36,14 +36,14 @@ Click the button below to fork and deploy directly to Vercel:
 
 Click the button below to fork and deploy to Netlify:
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/your-username/cf-worker-insights)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Jeeva-zone/cf-worker-insights)
 
 - Pre-configured with `netlify.toml` and `netlify/functions/server.ts`.
 - Automatically mounts serverless endpoints for live Cloudflare metrics.
 
 ### 3. Deploy with Cloudflare Pages
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/your-username/cf-worker-insights)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Jeeva-zone/cf-worker-insights)
 
 - Direct static deployment to Cloudflare's global edge network.
 - Build settings:
@@ -109,7 +109,7 @@ Clone the repository and run the local development server:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-username/cf-worker-insights.git
+git clone https://github.com/Jeeva-zone/cf-worker-insights.git
 cd cf-worker-insights
 
 # 2. Install dependencies
