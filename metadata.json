@@ -1,0 +1,6 @@
+{
+  "name": "CF Worker Insights",
+  "description": "Real-time, high-density analytics dashboard for monitoring Cloudflare Workers with performance metrics, CPU budget tracking, and request diagnostics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
