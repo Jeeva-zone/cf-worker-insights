@@ -50,6 +50,20 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+// Download .env endpoint for Vercel/Netlify deployment
+app.get("/api/download-env", (_req, res) => {
+  const envContent = [
+    `# Cloudflare API Credentials for Vercel / Netlify Deployment`,
+    `CLOUDFLARE_API_TOKEN="${CF_API_TOKEN}"`,
+    `CLOUDFLARE_ACCOUNT_ID="${CF_ACCOUNT_ID}"`,
+    `CLOUDFLARE_DEFAULT_WORKER="${process.env.CLOUDFLARE_DEFAULT_WORKER || 'speed-cloudflare-com'}"`,
+    ``
+  ].join("\n");
+  res.setHeader("Content-Disposition", 'attachment; filename=".env"');
+  res.setHeader("Content-Type", "text/plain");
+  res.send(envContent);
+});
+
 // Cloudflare Connection Status Endpoint
 app.get("/api/cloudflare/status", async (_req, res) => {
   try {

@@ -10,7 +10,8 @@ import {
   Check, 
   Zap, 
   ExternalLink,
-  Radio
+  Radio,
+  Download
 } from 'lucide-react';
 import { TimeRange, AutoRefreshRate, WorkerInfo } from '../types';
 
@@ -306,6 +307,22 @@ export const Header: React.FC<HeaderProps> = ({
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
             </button>
+
+            {/* Download .env for Vercel / Deployments */}
+            <a
+              href="/api/download-env"
+              download=".env"
+              id="download-env-button"
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-medium transition-all ${
+                isDarkMode 
+                  ? 'bg-slate-900/80 border-slate-800 hover:border-blue-500/40 text-slate-300 hover:text-white' 
+                  : 'bg-slate-50 border-slate-200 hover:border-blue-500/40 text-slate-700 hover:text-black'
+              }`}
+              title="Download .env file for Vercel, Netlify, or local deployment"
+            >
+              <Download className="w-3.5 h-3.5 text-blue-400" />
+              <span className="hidden sm:inline font-mono text-[11px]">.env</span>
+            </a>
 
           </div>
         </div>

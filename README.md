@@ -23,7 +23,25 @@ A modern, high-density real-time observability dashboard for monitoring **Cloudf
 
 Deploy your own instance of CF Worker Insights in seconds to your preferred platform:
 
-### 1. Deploy with Vercel (Recommended)
+### 1. Deploy with Cloudflare Workers (Full Edge Architecture)
+
+Run the entire application (Vite React UI + Serverless Edge API proxy) natively on Cloudflare's global network:
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Jeeva-zone/cf-worker-insights)
+
+- **Wrangler Configuration**: Pre-configured with `wrangler.jsonc` and `worker/index.ts`.
+- **Static Edge Assets**: Powered by Workers Static Assets with SPA routing.
+- **GitHub Actions Auto-Deploy**: Included workflow in `.github/workflows/deploy-cloudflare.yml`.
+- **CLI Deployment in 1 Command**:
+  ```bash
+  # Log into your Cloudflare account
+  npx wrangler login
+
+  # Build dashboard and deploy Worker to Cloudflare
+  npm run deploy:worker
+  ```
+
+### 2. Deploy with Vercel
 
 Click the button below to fork and deploy directly to Vercel:
 
@@ -32,7 +50,7 @@ Click the button below to fork and deploy directly to Vercel:
 - Pre-configured with `vercel.json` and `/api/index.ts` serverless functions.
 - Securely proxies calls to Cloudflare GraphQL API without exposing tokens to the client.
 
-### 2. Deploy with Netlify
+### 3. Deploy with Netlify
 
 Click the button below to fork and deploy to Netlify:
 
@@ -40,16 +58,6 @@ Click the button below to fork and deploy to Netlify:
 
 - Pre-configured with `netlify.toml` and `netlify/functions/server.ts`.
 - Automatically mounts serverless endpoints for live Cloudflare metrics.
-
-### 3. Deploy with Cloudflare Pages
-
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Jeeva-zone/cf-worker-insights)
-
-- Direct static deployment to Cloudflare's global edge network.
-- Build settings:
-  - **Build Command**: `npm run build`
-  - **Build Output Directory**: `dist`
-  - **Node.js Version**: `20`
 
 ---
 
@@ -82,6 +90,9 @@ Set these environment variables in your deployment dashboard (Vercel Project Set
 
 ```
 cf-worker-insights/
+├── worker/
+│   └── index.ts                 # Cloudflare Worker Edge Entrypoint (APIs + Assets)
+├── wrangler.jsonc               # Cloudflare Workers configuration (Routes & Assets)
 ├── api/
 │   └── index.ts                 # Vercel Serverless Function entrypoint
 ├── netlify/
@@ -89,7 +100,8 @@ cf-worker-insights/
 │       └── server.ts            # Netlify Serverless Function entrypoint
 ├── .github/
 │   └── workflows/
-│       └── ci.yml               # Automated GitHub Actions CI/CD pipeline
+│       ├── ci.yml               # Automated CI/CD pipeline (Lint & Build)
+│       └── deploy-cloudflare.yml# Automated deployment to Cloudflare Workers
 ├── src/                         # React 19 Frontend Dashboard
 │   ├── components/              # Charts, KPI cards, tables & GraphQL modal
 │   ├── data/                    # Type definitions and fallback data generators
@@ -132,6 +144,8 @@ Visit `http://localhost:3000` in your browser.
 | `npm run build` | Compiles production assets into `/dist` and bundles server for production |
 | `npm run start` | Boots production server (`node dist/server.cjs`) |
 | `npm run lint` | Runs TypeScript compiler checks (`tsc --noEmit`) |
+| `npm run deploy:worker` | Builds dashboard and deploys directly to Cloudflare Workers |
+| `npm run dev:worker` | Runs local worker development preview with Wrangler |
 | `npm run clean` | Cleans build artifacts |
 
 ---
